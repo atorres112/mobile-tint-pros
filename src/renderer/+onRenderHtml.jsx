@@ -3,9 +3,9 @@ import { renderToString } from "react-dom/server";
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
 import { PageShell } from "./PageShell.jsx";
 
-export { render };
+export { onRenderHtml };
 
-function render(pageContext) {
+function onRenderHtml(pageContext) {
   const pageHtml = renderToString(
     <React.StrictMode>
       <PageShell pageContext={pageContext} />

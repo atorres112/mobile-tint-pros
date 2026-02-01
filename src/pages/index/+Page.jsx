@@ -2,9 +2,7 @@ import React from "react";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import App from "../../App.jsx";
 
-export { Page };
-export const clientRouting = true;
-export const route = "*";
+export default Page;
 
 function Page(pageContext) {
   const isBrowser = typeof window !== "undefined";

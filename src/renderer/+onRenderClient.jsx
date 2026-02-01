@@ -2,9 +2,9 @@ import React from "react";
 import { hydrateRoot } from "react-dom/client";
 import { PageShell } from "./PageShell.jsx";
 
-export { render };
+export { onRenderClient };
 
-function render(pageContext) {
+function onRenderClient(pageContext) {
   hydrateRoot(
     document.getElementById("root"),
     <React.StrictMode>
