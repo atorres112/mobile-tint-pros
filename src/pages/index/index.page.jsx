@@ -3,7 +3,6 @@ import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import App from "../../App.jsx";
 
 export { Page };
-export const prerender = true;
 export const clientRouting = true;
 export const route = "*";
 
