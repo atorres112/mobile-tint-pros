@@ -56,7 +56,18 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
         {label} <ChevronDown size={16} />
       </button>
 
-      {isOpen && <div className="menu">{children}</div>}
+      {isOpen && (
+        <div
+          className="menu"
+          onClick={(e) => {
+            if (isMobile && !e.target.closest("a")) {
+              onToggle(null);
+            }
+          }}
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 }
@@ -64,6 +75,12 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
 export default function Navbar() {
   const isMobile = useMediaQuery("(max-width: 900px)");
   const [openId, setOpenId] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleLinkClick = () => {
+    if (!isMobile) return;
+    setMenuOpen(false);
+    setOpenId(null);
+  };
 
   return (
     <header className="navbar">
@@ -73,8 +90,20 @@ export default function Navbar() {
           <span>The Mobile Tint Pros</span>
         </Link>
 
-        <nav className="navlinks">
-          <NavLink className="navlink" to="/">
+        <button
+          className="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav className={`navlinks ${menuOpen ? "open" : ""}`}>
+          <NavLink className="navlink" to="/" onClick={handleLinkClick}>
             Home
           </NavLink>
 
@@ -85,8 +114,8 @@ export default function Navbar() {
             openId={openId}
             onToggle={setOpenId}
           >
-            <Link to="/chicago">Chicago, IL</Link>
-            <Link to="/suburbs">Chicago Suburbs</Link>
+            <Link to="/chicago" onClick={handleLinkClick}>Chicago, IL</Link>
+            <Link to="/suburbs" onClick={handleLinkClick}>Chicago Suburbs</Link>
           </Dropdown>
 
           <Dropdown
@@ -96,26 +125,30 @@ export default function Navbar() {
             openId={openId}
             onToggle={setOpenId}
           >
-            <Link to="/services/residential">Residential</Link>
-            <Link to="/services/commercial">Commercial</Link>
-            <Link to="/services/automotive">Automotive</Link>
+            <Link to="/services/residential" onClick={handleLinkClick}>Residential</Link>
+            <Link to="/services/commercial" onClick={handleLinkClick}>Commercial</Link>
+            <Link to="/services/automotive" onClick={handleLinkClick}>Automotive</Link>
           </Dropdown>
 
-          <NavLink className="navlink" to="/gallery">
+          <NavLink className="navlink" to="/gallery" onClick={handleLinkClick}>
             Gallery
           </NavLink>
 
-          <NavLink className="navlink" to="/contact">
+          <NavLink className="navlink" to="/contact" onClick={handleLinkClick}>
             Contact
           </NavLink>
 
-          <NavLink className="navlink" to="/faq">
+          <NavLink className="navlink" to="/faq" onClick={handleLinkClick}>
             FAQ
           </NavLink>
 
-          <NavLink className="navlink" to="/blog">
+          <NavLink className="navlink" to="/blog" onClick={handleLinkClick}>
             Blog
           </NavLink>
+
+          <Link className="btn nav-cta" to="/contact" onClick={handleLinkClick}>
+            Book Now
+          </Link>
         </nav>
       </div>
     </header>
