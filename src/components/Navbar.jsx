@@ -27,18 +27,15 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
   const isOpen = isMobile ? openId === id : open;
 
   useEffect(() => {
+    if (isMobile) return undefined;
     function handleClickOutside(e) {
       if (ref.current && !ref.current.contains(e.target)) {
-        if (isMobile) {
-          onToggle(null);
-        } else {
-          setOpen(false);
-        }
+        setOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isMobile, onToggle]);
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isMobile]);
 
   return (
     <div className="dropdown" ref={ref}>
@@ -56,18 +53,7 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
         {label} <ChevronDown size={16} />
       </button>
 
-      {isOpen && (
-        <div
-          className="menu"
-          onClick={(e) => {
-            if (isMobile && !e.target.closest("a")) {
-              onToggle(null);
-            }
-          }}
-        >
-          {children}
-        </div>
-      )}
+      {isOpen && <div className="menu">{children}</div>}
     </div>
   );
 }
@@ -78,8 +64,10 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleLinkClick = () => {
     if (!isMobile) return;
-    setMenuOpen(false);
-    setOpenId(null);
+    setTimeout(() => {
+      setMenuOpen(false);
+      setOpenId(null);
+    }, 0);
   };
 
   return (

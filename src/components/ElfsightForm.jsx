@@ -16,7 +16,7 @@ export default function ElfsightForm() {
     <div
       className="elfsight-app-203d7257-e941-4419-a954-06ed83b1d81e"
       data-elfsight-app-lazy
-      style={{ minHeight: 400 }}
+      style={{ minHeight: 400, width: "100%" }}
     />
   );
 }
