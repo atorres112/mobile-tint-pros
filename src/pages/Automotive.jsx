@@ -104,6 +104,18 @@ export default function Commercial() {
           <div className="hero-panel">
             <div className="grid2" style={{ alignItems: "center" }}>
               <div>
+                <img
+                  src="/gallery/5.png"
+                  alt="Commercial window tinting project"
+                  style={{
+                    width: "100%",
+                    maxWidth: "100%",
+                    borderRadius: 18,
+                    display: "block",
+                    margin: "0 0 14px",
+                    objectFit: "cover",
+                  }}
+                />
                 <div className="pill">The Mobile Tint Pros • Commercial Services</div>
                 <h1 className="h1">Premier Commercial Window Tinting</h1>
 
@@ -113,7 +125,7 @@ export default function Commercial() {
                 </p>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
-                  <a className="btn" href="#estimate">
+                  <a className="btn" href="/free-estimate">
                     Get a Free Estimate <ArrowRight size={18} />
                   </a>
                   <a className="btn secondary" href="#project-types">
@@ -215,7 +227,7 @@ export default function Commercial() {
               <li>Helps keep interiors cool without blocking visibility</li>
               <li>Won&#39;t block cellular signals like metalized films</li>
             </ul>
-            <a className="tintTypeCta" href="#estimate">Get an estimate today</a>
+            <a className="tintTypeCta" href="/free-estimate">Get an estimate today</a>
           </div>
 
           <div className="tintTypeCard">
@@ -339,7 +351,7 @@ export default function Commercial() {
             </ul>
 
             <div style={{ marginTop: 16 }}>
-              <a className="btn" href="#estimate">
+              <a className="btn" href="/free-estimate">
                 Get a Free Estimate <ArrowRight size={18} />
               </a>
             </div>
@@ -349,5 +361,11 @@ export default function Commercial() {
     </>
   );
 }
+
+
+
+
+
+
 
 

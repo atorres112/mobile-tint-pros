@@ -6,12 +6,14 @@ export default Page;
 
 function Page(pageContext) {
   const isBrowser = typeof window !== "undefined";
+  const initialPath =
+    pageContext.urlPathname || pageContext.urlOriginal || "/";
   const router = isBrowser ? (
     <BrowserRouter>
       <App />
     </BrowserRouter>
   ) : (
-    <MemoryRouter initialEntries={[pageContext.urlOriginal || "/"]}>
+    <MemoryRouter initialEntries={[initialPath]}>
       <App />
     </MemoryRouter>
   );

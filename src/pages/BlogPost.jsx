@@ -79,7 +79,7 @@ export default function BlogPost() {
         title="Ready to upgrade your windows?"
         text="Get a fast, no-pressure quote from The Mobile Tint Pros. We’ll help you pick the right film for privacy, glare, and heat control."
         buttonText="Get a Free Estimate"
-        buttonLink="/contact"
+        buttonLink="/free-estimate"
         subtitle="Serving Chicago and surrounding areas"
         image="/gallery/1.png"
       />

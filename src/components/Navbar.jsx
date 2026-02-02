@@ -115,7 +115,7 @@ export default function Navbar() {
           >
             <Link to="/services/residential" onClick={handleLinkClick}>Residential</Link>
             <Link to="/services/commercial" onClick={handleLinkClick}>Commercial</Link>
-            <Link to="/services/automotive" onClick={handleLinkClick}>Automotive</Link>
+            <Link to="/services/automotive-tint" onClick={handleLinkClick}>Auto Tint</Link>
           </Dropdown>
 
           <NavLink className="navlink" to="/gallery" onClick={handleLinkClick}>

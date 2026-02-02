@@ -3,7 +3,7 @@ title: Security Window Film for Businesses: Reducing Theft and Property Damage
 description: Learn how security window film protects businesses from theft, vandalism, and property damage with professional mobile installation services.
 date: 2026-01-31
 slug: security-film
-cover: /solutions/1.png
+cover: /gallery/secfilm.jpeg
 
 ---
 

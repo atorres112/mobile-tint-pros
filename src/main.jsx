@@ -4,10 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./styles.css";
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </React.StrictMode>
-);
+const container = document.getElementById("root");
+
+// Avoid double-mount if Vike already hydrated the app.
+if (container && container.dataset.hydrated !== "true") {
+  ReactDOM.createRoot(container).render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+}

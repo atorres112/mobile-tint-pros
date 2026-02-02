@@ -200,7 +200,7 @@ export default function Gallery() {
       </div>
 
       <Section title="Our Work" kicker="Gallery">
-        <div className="galleryGrid">
+        <div className="galleryGrid" suppressHydrationWarning>
           {images.map((img, i) => (
             <button
               key={img.src}
@@ -230,7 +230,7 @@ export default function Gallery() {
         title="Block Heat. Add Privacy. Upgrade Your Ride or Home."
         text="Professional window tinting for homes, businesses, and vehicles. Stay cooler, protect interiors, and look better — installed by pros."
         buttonText="🔥 Get My Free Quote"
-        buttonLink="/contact"
+        buttonLink="/free-estimate"
         subtitle="Serving Chicago and surrounding areas"
       />
 

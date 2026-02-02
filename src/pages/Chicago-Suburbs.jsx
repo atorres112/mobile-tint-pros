@@ -25,7 +25,7 @@ function ServiceBlock({ icon, title, text }) {
         {text}
       </p>
       <div style={{ marginTop: 14 }}>
-        <a className="btn secondary" href="#estimate">
+        <a className="btn secondary" href="/free-estimate">
           Book Now <ArrowRight size={18} />
         </a>
       </div>
@@ -65,7 +65,7 @@ export default function Chicago() {
                 </p>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
-                  <a className="btn" href="#estimate">
+                  <a className="btn" href="/free-estimate">
                     Book Now <ArrowRight size={18} />
                   </a>
                   <a className="btn secondary" href="#services">
@@ -236,5 +236,6 @@ export default function Chicago() {
     </>
   );
 }
+
 
 

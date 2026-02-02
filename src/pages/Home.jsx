@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Sparkles, Sun } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel.jsx";
 import ElfsightForm from "../components/ElfsightForm.jsx";
@@ -42,9 +43,15 @@ function SolutionCard({ icon, subtitle, title, body, href, imageSrc, imageAlt })
       <p className="lead" style={{ margin: "0 0 14px" }}>
         {body}
       </p>
-      <a className="btn secondary" href={href}>
-        Learn More <ArrowRight size={18} />
-      </a>
+      {href && href.startsWith("/") ? (
+        <Link className="btn secondary" to={href}>
+          Learn More <ArrowRight size={18} />
+        </Link>
+      ) : (
+        <a className="btn secondary" href={href}>
+          Learn More <ArrowRight size={18} />
+        </a>
+      )}
     </div>
   );
 }
@@ -117,9 +124,9 @@ export default function Home() {
                 </p>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
-                  <a className="btn" href="#estimate">
+                  <Link className="btn" to="/free-estimate">
                     Get a Free Estimate <ArrowRight size={18} />
-                  </a>
+                  </Link>
                   <a className="btn secondary" href="#how-it-works">
                     How it works
                   </a>
@@ -272,7 +279,7 @@ export default function Home() {
             subtitle="Safety + Strength"
             title="Security"
             body="Security films help hold glass together and improve break-in resistance."
-            href="/services/residential"
+            href="/blog/security-film"
           />
         </div>
       </Section>
@@ -286,12 +293,12 @@ export default function Home() {
               We focus on prep, precision, and clean installs—so your film looks perfect and lasts.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 14 }}>
-              <a className="btn" href="#estimate">
+              <Link className="btn" to="/free-estimate">
                 Get a Free Estimate <ArrowRight size={18} />
-              </a>
-              <a className="btn secondary" href="/contact">
+              </Link>
+              <Link className="btn secondary" to="/contact">
                 Contact us
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -327,4 +334,5 @@ export default function Home() {
     </>
   );
 }
+
 

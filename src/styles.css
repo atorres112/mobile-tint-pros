@@ -78,6 +78,86 @@ a { color: inherit; text-decoration: none; }
   .grid3 { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: 1fr 1fr; }
 }
+
+/* ===== Utility Pages (404 / Coming Soon) ===== */
+.utility-page {
+  padding: 80px 0;
+}
+
+.utility-card {
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background:
+    radial-gradient(900px 450px at 12% 0%, rgba(101, 182, 230, 0.22), transparent 62%),
+    radial-gradient(600px 380px at 90% 30%, rgba(255, 27, 38, 0.16), transparent 58%),
+    rgba(255, 255, 255, 0.9);
+  box-shadow: var(--shadow);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.utility-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.utility-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.utility-hero {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.8);
+  display: grid;
+  gap: 14px;
+  place-items: center;
+  text-align: center;
+}
+
+.utility-logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+  object-fit: contain;
+  background: rgba(15, 23, 34, 0.06);
+  padding: 10px;
+  box-shadow: 0 20px 50px rgba(101, 182, 230, 0.15);
+}
+
+.utility-hero-number {
+  font-size: clamp(36px, 8vw, 84px);
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.utility-hero-text {
+  color: var(--muted);
+  font-weight: 600;
+  max-width: 26ch;
+}
+
+@media (max-width: 900px) {
+  .utility-card {
+    grid-template-columns: 1fr;
+  }
+  .utility-hero {
+    order: -1;
+  }
+}
 @media (max-width: 900px) {
   .nav-inner {
     position: relative;
@@ -248,6 +328,21 @@ a { color: inherit; text-decoration: none; }
     width: 100%;
     margin-top: 6px;
     z-index: 70;
+  }
+}
+
+@media (max-width: 900px) {
+  .elfsight-app-203d7257-e941-4419-a954-06ed83b1d81e,
+  .elfsight-app-203d7257-e941-4419-a954-06ed83b1d81e iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 900px) {
+  .elfsight-wrap {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -879,6 +974,52 @@ a { color: inherit; text-decoration: none; }
   color: #1f2937;
   font-size: 14px;
   font-weight: 600;
+}
+
+/* ===== Residential CTA ===== */
+.residentialCta {
+  padding: 70px 0;
+}
+
+.residentialCtaCard {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 24px;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.residentialCtaImage {
+  min-height: 280px;
+}
+
+.residentialCtaImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.residentialCtaContent {
+  padding: 36px;
+  display: grid;
+  gap: 10px;
+  align-content: center;
+}
+
+@media (max-width: 900px) {
+  .residentialCtaCard {
+    grid-template-columns: 1fr;
+  }
+  .residentialCtaImage {
+    min-height: 220px;
+  }
+  .residentialCtaContent {
+    padding: 28px;
+  }
 }
 
 /* ===== Blog Post ===== */

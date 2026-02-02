@@ -72,7 +72,7 @@ export default function ContactUs() {
             </div>
 
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
-              <a className="btn" href="#contact-form">
+              <a className="btn" href="/free-estimate">
                 Get in Contact <ArrowRight size={18} />
               </a>
               <a className="btn secondary" href="#faq">
