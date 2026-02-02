@@ -107,6 +107,7 @@ export default function Home() {
                 <img
                   src="/solutions/1.png"
                   alt="Window film example"
+                  className="hero-image"
                   style={{
                     width: "100%",
                     maxWidth: "100%",

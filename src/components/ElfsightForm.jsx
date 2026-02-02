@@ -14,7 +14,7 @@ export default function ElfsightForm() {
     const widget = document.createElement("div");
     widget.className = "elfsight-app-203d7257-e941-4419-a954-06ed83b1d81e";
     widget.setAttribute("data-elfsight-app-lazy", "");
-    widget.style.minHeight = "400px";
+    widget.style.minHeight = "300px";
     widget.style.width = "100%";
     container.appendChild(widget);
 
@@ -34,7 +34,9 @@ export default function ElfsightForm() {
 
   return (
     <div className="elfsight-wrap" suppressHydrationWarning>
-      <div ref={containerRef} suppressHydrationWarning />
+      <div className="elfsight-scale" suppressHydrationWarning>
+        <div ref={containerRef} />
+      </div>
     </div>
   );
 }

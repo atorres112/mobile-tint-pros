@@ -64,6 +64,11 @@ a { color: inherit; text-decoration: none; }
   padding: 18px;
 }
 
+.card img {
+  max-width: 100%;
+  height: auto;
+}
+
 .section { padding: 70px 0; }
 .h1 { font-size: clamp(34px, 5vw, 54px); line-height: 1.02; margin: 14px 0; }
 .h2 { font-size: clamp(24px, 3vw, 34px); margin: 0 0 14px; }
@@ -72,11 +77,24 @@ a { color: inherit; text-decoration: none; }
 .grid2 { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 22px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.grid2 > *, .grid3 > *, .grid4 > * { min-width: 0; }
 
 @media (max-width: 900px) {
   .grid2 { grid-template-columns: 1fr; }
   .grid3 { grid-template-columns: 1fr; }
   .grid4 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 700px) {
+  .section { padding: 56px 0; }
+  .card { padding: 16px; }
+  .grid2, .grid3, .grid4 { gap: 14px; }
+  .kpi {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  .hero-panel { padding: 22px; }
 }
 
 /* ===== Utility Pages (404 / Coming Soon) ===== */
@@ -242,6 +260,7 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 520px) {
   .grid4 { grid-template-columns: 1fr; }
+  .section { padding: 48px 0; }
 }
 
 .navbar {
@@ -358,6 +377,24 @@ a { color: inherit; text-decoration: none; }
     rgba(255,255,255,0.75);
   box-shadow: var(--shadow);
   padding: 28px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hero-panel .grid2 > * {
+  min-width: 0;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 700px) {
+  .hero-panel {
+    padding: 22px;
+  }
 }
 
 .kpi {
@@ -408,6 +445,22 @@ a { color: inherit; text-decoration: none; }
   background: rgba(15, 23, 34, 0.06);
   padding: 6px;
   margin-bottom: 10px;
+}
+
+/* ===== Elfsight Form ===== */
+.elfsight-scale {
+  transform: scale(0.85);
+  transform-origin: top center;
+  width: 117.7%;
+  margin-left: -8.85%;
+}
+
+@media (max-width: 700px) {
+  .elfsight-scale {
+    transform: scale(0.8);
+    width: 125%;
+    margin-left: -12.5%;
+  }
 }
 
 
