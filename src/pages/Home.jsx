@@ -308,7 +308,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* SATISFIED CUSTOMERS */}
+      {/*
       <Section title="Satisfied Customers" kicker="Trusted by">
         <div className="grid4">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -323,6 +323,7 @@ export default function Home() {
           ))}
         </div>
       </Section>
+      */}
     </>
   );
 }

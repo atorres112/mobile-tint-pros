@@ -2,36 +2,69 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
-function Dropdown({ label, children }) {
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    const media = window.matchMedia(query);
+    const handler = () => setMatches(media.matches);
+    handler();
+    if (media.addEventListener) {
+      media.addEventListener("change", handler);
+      return () => media.removeEventListener("change", handler);
+    }
+    media.addListener(handler);
+    return () => media.removeListener(handler);
+  }, [query]);
+
+  return matches;
+}
+
+function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
+  const isOpen = isMobile ? openId === id : open;
 
   useEffect(() => {
     function handleClickOutside(e) {
       if (ref.current && !ref.current.contains(e.target)) {
-        setOpen(false);
+        if (isMobile) {
+          onToggle(null);
+        } else {
+          setOpen(false);
+        }
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isMobile, onToggle]);
 
   return (
     <div className="dropdown" ref={ref}>
       <button
         className="navlink"
-        onClick={() => setOpen(!open)}
+        onClick={() => {
+          if (isMobile) {
+            onToggle(isOpen ? null : id);
+          } else {
+            setOpen(!open);
+          }
+        }}
         type="button"
       >
         {label} <ChevronDown size={16} />
       </button>
 
-      {open && <div className="menu">{children}</div>}
+      {isOpen && <div className="menu">{children}</div>}
     </div>
   );
 }
 
 export default function Navbar() {
+  const isMobile = useMediaQuery("(max-width: 900px)");
+  const [openId, setOpenId] = useState(null);
+
   return (
     <header className="navbar">
       <div className="container nav-inner">
@@ -45,13 +78,24 @@ export default function Navbar() {
             Home
           </NavLink>
 
-          <Dropdown label="Service Areas">
-            <Link to="/service-areas">All Service Areas</Link>
+          <Dropdown
+            id="service-areas"
+            label="Service Areas"
+            isMobile={isMobile}
+            openId={openId}
+            onToggle={setOpenId}
+          >
             <Link to="/chicago">Chicago, IL</Link>
-            <Link to="/suburbs">Schaumburg, IL</Link>
+            <Link to="/suburbs">Chicago Suburbs</Link>
           </Dropdown>
 
-          <Dropdown label="Services">
+          <Dropdown
+            id="services"
+            label="Services"
+            isMobile={isMobile}
+            openId={openId}
+            onToggle={setOpenId}
+          >
             <Link to="/services/residential">Residential</Link>
             <Link to="/services/commercial">Commercial</Link>
             <Link to="/services/automotive">Automotive</Link>
