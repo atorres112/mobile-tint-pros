@@ -48,6 +48,6 @@ export default function SEO({
   ].filter(Boolean);
 
   return (
-    <Helmet>{tags}</Helmet>
+    <Helmet prioritizeSeoTags>{tags}</Helmet>
   );
 }

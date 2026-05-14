@@ -1,5 +1,13 @@
 import React from "react";
+import ElfsightForm from "../components/ElfsightForm.jsx";
+import SEO from "../components/SEO.jsx";
 import { ArrowRight, Building2, Home, Blinds, Zap, Smile, Shield } from "lucide-react";
+import {
+  BUSINESS_EMAIL,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  buildLocalBusinessJsonLd,
+} from "../lib/site.js";
 
 function Section({ title, kicker, children }) {
   return (
@@ -48,20 +56,36 @@ function Benefit({ icon, title, text }) {
   );
 }
 
-export default function Chicago() {
+const description =
+  "Window tinting in the Chicago suburbs for homes and businesses. Serving nearby communities with residential and commercial film installation.";
+
+export default function ChicagoSuburbs() {
   return (
     <>
-      {/* HERO (matches the location-page hero pattern) */}
+      <SEO
+        title="Chicago Suburbs Window Tinting | The Mobile Tint Pros"
+        description={description}
+        canonical="/chicago-suburbs"
+        ogImage="/gallery/chicago.jpg"
+        jsonLd={buildLocalBusinessJsonLd({
+          url: "/chicago-suburbs",
+          description,
+          image: "/gallery/chicago.jpg",
+          areaServed: ["Chicago suburbs"],
+        })}
+      />
+
       <div className="hero">
         <div className="container">
           <div className="hero-panel">
             <div className="grid2" style={{ alignItems: "center" }}>
               <div>
-                <div className="pill">The Mobile Tint Pros • Houston, Texas</div>
-                <h1 className="h1">Window Tinting & Flat Glass Solutions in Houston</h1>
+                <div className="pill">The Mobile Tint Pros - Chicago Suburbs</div>
+                <h1 className="h1">Window Tinting and Flat Glass Solutions in the Chicago Suburbs</h1>
                 <p className="lead">
-                  Professional window film services for homes and businesses — focused on heat reduction, glare control,
-                  privacy, UV protection, and a cleaner, more comfortable interior.
+                  Mobile window film services for nearby suburbs and surrounding
+                  communities. We help homes and businesses reduce heat, glare,
+                  and UV exposure while improving comfort and privacy.
                 </p>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
@@ -75,122 +99,118 @@ export default function Chicago() {
 
                 <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
                   <div className="kpi">
-                    <strong>Serving Houston</strong>
-                    <span>Residential + commercial</span>
+                    <strong>Serving nearby suburbs</strong>
+                    <span>Residential and commercial projects</span>
                   </div>
                   <div className="kpi">
                     <strong>Film options</strong>
-                    <span>Solar • privacy • security • decorative</span>
+                    <span>Solar, privacy, security, and decorative film</span>
                   </div>
                 </div>
               </div>
 
-              {/* Image (simple, no copyrighted assets) */}
               <div className="card" style={{ padding: 0, overflow: "hidden" }}>
                 <img
-                  alt="Houston skyline"
-                  src="https://www.wallpaperflare.com/photo-of-brown-and-gray-high-rise-buildings-during-daytime-wallpaper-zruti"
+                  alt="Chicago area skyline"
+                  src="/gallery/chicago.jpg"
                   style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
                 />
                 <div style={{ padding: 16 }}>
-                  <div className="pill">Houston, TX</div>
+                  <div className="pill">Chicago Suburbs</div>
                   <p className="lead" style={{ margin: "10px 0 0", fontSize: 14 }}>
-                    We’ll help you pick the right film for your goals and install it with a clean, precise finish.
+                    If you are just outside the city, we can help confirm
+                    coverage and quote your project quickly.
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-      {/* Intro section (mirrors the “Top specialists in Houston” block) */}
-      <Section title="Top Window Film Specialists in Houston, Texas" kicker="Houston Location">
+      <Section title="Window Film Specialists for Nearby Communities" kicker="Suburban Coverage">
         <div className="grid2">
           <div className="card">
             <h3 style={{ marginTop: 0 }}>What we do</h3>
             <p className="lead">
-              If you’re looking for residential or commercial window tint installation in Houston, we’ve got you covered.
-              We handle everything from consultation to product selection to installation — so you get results that look
-              great and perform.
+              We work with homeowners, offices, storefronts, and property
+              managers across surrounding communities that need better heat
+              control, privacy, and glare reduction.
             </p>
             <p className="lead" style={{ marginBottom: 0 }}>
-              Window film can help lower cooling costs, reduce glare, protect interiors from UV fading, increase privacy,
-              and add a layer of safety by helping hold glass together.
+              Whether your project is a single home, a storefront, or a larger
+              commercial space, we help you choose the right film and install it
+              cleanly.
             </p>
           </div>
 
           <div className="card">
-            <h3 style={{ marginTop: 0 }}>Popular Houston needs</h3>
+            <h3 style={{ marginTop: 0 }}>Common suburban needs</h3>
             <div style={{ display: "grid", gap: 12 }}>
               <div className="kpi">
-                <strong>Heat + glare control</strong>
-                <span>Cooler rooms, fewer hot spots</span>
+                <strong>Heat and glare control</strong>
+                <span>Make bright rooms more usable</span>
               </div>
               <div className="kpi">
                 <strong>Privacy</strong>
-                <span>Frosted & decorative options</span>
+                <span>Great for homes, offices, and glass entries</span>
               </div>
               <div className="kpi">
-                <strong>Safety</strong>
-                <span>Helps reduce glass hazards</span>
+                <strong>Energy savings</strong>
+                <span>Help reduce solar heat gain on exposed glass</span>
               </div>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Services blocks (residential / commercial / blinds like the location page) */}
-      <Section title="Services in Houston" kicker="Services">
+      <Section title="Services in the Chicago Suburbs" kicker="Services">
         <div id="services" className="grid3">
           <ServiceBlock
             icon={<Home size={16} />}
             title="Residential Flat Glass"
-            text="Improve comfort and reduce heat coming through your home’s windows. Great for energy savings, glare reduction, UV protection, and privacy."
+            text="Improve comfort and reduce heat through your home's windows with films designed for glare, UV, privacy, and energy performance."
           />
           <ServiceBlock
             icon={<Building2 size={16} />}
             title="Commercial Flat Glass"
-            text="Help your building feel more consistent by reducing glare and hot/cold spots. Window film can improve comfort for staff and tenants while cutting overhead costs."
+            text="Support offices, storefronts, and shared spaces with film that improves comfort, consistency, and daytime privacy."
           />
           <ServiceBlock
             icon={<Blinds size={16} />}
             title="Window Blind Installation"
-            text="Want a full window treatment solution? We can measure and install blinds with a clean, professional finish for home or office spaces."
+            text="Need a complete window treatment solution? We can handle blinds along with your window film project."
           />
         </div>
       </Section>
 
-      {/* Benefits section (save energy / improve comfort / increase safety pattern) */}
       <Section title="Benefits" kicker="Why Film">
         <div className="grid3">
           <Benefit
             icon={<Zap size={16} />}
             title="Save Energy"
-            text="Reduce heat gain through windows to help lower cooling costs — especially useful in Houston’s sun and humidity."
+            text="Reduce heat gain through windows to help rooms stay more consistent and comfortable."
           />
           <Benefit
             icon={<Smile size={16} />}
             title="Improve Comfort"
-            text="Cut glare and balance room temperatures so spaces feel more usable throughout the day."
+            text="Cut glare and balance indoor temperatures so homes and workspaces feel better throughout the day."
           />
           <Benefit
             icon={<Shield size={16} />}
             title="Increase Safety"
-            text="Helps hold broken glass together, which can reduce hazards from accidents or impacts."
+            text="Some films help hold glass together, which can reduce hazards from impacts or breakage."
           />
         </div>
       </Section>
 
-      {/* Estimate / embed section (same idea as their “Get a Free Estimate” block) */}
       <Section title="Get a Free Estimate" kicker="Free Quote">
         <div className="grid2">
           <div className="card">
             <h3 style={{ marginTop: 0 }}>Request pricing</h3>
             <p className="lead">
-              For now we’re keeping the same embedded quote experience you asked for.
-              Later we can swap this to your own form.
+              Tell us about your project and we will confirm coverage, recommend
+              film options, and send the next steps.
             </p>
 
             <div
@@ -199,35 +219,36 @@ export default function Chicago() {
                 borderRadius: 16,
                 overflow: "hidden",
                 border: "1px solid var(--border)",
-                background: "white",
+                background: "var(--panel)",
               }}
             >
-              <iframe
-                title="Quote Form"
-                src="https://commercialfilmspecialists.com/window-tint-free-quote/"
-                style={{ width: "100%", height: 620, border: 0 }}
-                loading="lazy"
-              />
+              <ElfsightForm />
             </div>
+
+            <p className="lead" style={{ marginBottom: 0, marginTop: 12, fontSize: 13 }}>
+              Prefer to talk first? Call{" "}
+              <a href={`tel:${BUSINESS_PHONE_TEL}`}>{BUSINESS_PHONE_DISPLAY}</a>.
+            </p>
           </div>
 
           <div className="card">
-            <h3 style={{ marginTop: 0 }}>Houston service notes</h3>
+            <h3 style={{ marginTop: 0 }}>Suburban service notes</h3>
             <p className="lead" style={{ marginBottom: 0 }}>
-              Add your real service radius, hours, and phone here when ready. (We’ll also update the footer contact info.)
+              Not sure if you are in range? Send your city, address, and project
+              type. We will confirm availability quickly.
             </p>
             <div style={{ display: "grid", gap: 12, marginTop: 14 }}>
               <div className="kpi">
-                <strong>Hours</strong>
-                <span>Set your hours</span>
+                <strong>Coverage</strong>
+                <span>Nearby suburbs and surrounding communities</span>
               </div>
               <div className="kpi">
                 <strong>Phone</strong>
-                <span>Set your number</span>
+                <span>{BUSINESS_PHONE_DISPLAY}</span>
               </div>
               <div className="kpi">
                 <strong>Email</strong>
-                <span>Set your email</span>
+                <span>{BUSINESS_EMAIL}</span>
               </div>
             </div>
           </div>
@@ -236,6 +257,3 @@ export default function Chicago() {
     </>
   );
 }
-
-
-

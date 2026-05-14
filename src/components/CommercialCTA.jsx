@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function CommercialCTA({
   title = "Get a Free Consultation for Your Business",
-  text = "Interested in commercial window film, solar shades, or privacy solutions? Contact us with your goals and we will help you choose the right option for your space.",
+  text = "Need privacy film, solar control, decorative film, or security film for your business? Tell us about the space and we will recommend the right solution.",
   buttonText = "Get a Free Estimate",
   buttonLink = "/free-estimate",
-  image = "/gallery/5.png",
+  image = "/gallery/office.jpg",
   imageAlt = "Commercial window film consultation",
 }) {
   return (

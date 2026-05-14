@@ -51,13 +51,16 @@ async function getPostRoutes() {
 async function main() {
   const staticRoutes = [
     "/",
+    "/service-areas",
+    "/chicago",
+    "/chicago-suburbs",
     "/services/commercial",
     "/services/residential",
-    "/services/hunter-douglas",
+    "/services/automotive-tint",
     "/gallery",
     "/contact",
+    "/free-estimate",
     "/faq",
-    "/service-areas",
     "/blog",
   ];
 

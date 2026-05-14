@@ -3,14 +3,16 @@ import { getAllPosts } from "../lib/posts.js";
 export default async function onBeforePrerenderStart() {
   const staticRoutes = [
     "/",
-    "/houston",
+    "/service-areas",
+    "/chicago",
+    "/chicago-suburbs",
     "/services/commercial",
     "/services/residential",
-    "/services/hunter-douglas",
+    "/services/automotive-tint",
     "/gallery",
     "/contact",
+    "/free-estimate",
     "/faq",
-    "/service-areas",
     "/blog",
   ];
 

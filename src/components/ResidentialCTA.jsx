@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function ResidentialCTA({
   title = "Get a Free Consultation for Your Home",
-  text = "If you are interested in learning more about solar shades and blinds, contact us and we will answer any questions you may have.",
+  text = "Interested in reducing heat, glare, or daytime visibility in your home? Tell us about your windows and we will recommend the right film for comfort, privacy, and UV protection.",
   buttonText = "Get a Free Estimate",
   buttonLink = "/free-estimate",
-  image = "/gallery/5.png",
+  image = "/gallery/tinted-house-windows.jpg",
   imageAlt = "Residential window tint consultation",
 }) {
   return (

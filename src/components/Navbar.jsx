@@ -38,9 +38,11 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
   }, [isMobile]);
 
   return (
-    <div className="dropdown" ref={ref}>
+    <div className={`dropdown ${isOpen ? "open" : ""}`} ref={ref}>
       <button
         className="navlink"
+        aria-expanded={isOpen}
+        aria-haspopup="true"
         onClick={() => {
           if (isMobile) {
             onToggle(isOpen ? null : id);
@@ -53,7 +55,7 @@ function Dropdown({ id, label, children, isMobile, openId, onToggle }) {
         {label} <ChevronDown size={16} />
       </button>
 
-      {isOpen && <div className="menu">{children}</div>}
+      <div className="menu">{children}</div>
     </div>
   );
 }
@@ -102,8 +104,9 @@ export default function Navbar() {
             openId={openId}
             onToggle={setOpenId}
           >
+            <Link to="/service-areas" onClick={handleLinkClick}>All Service Areas</Link>
             <Link to="/chicago" onClick={handleLinkClick}>Chicago, IL</Link>
-            <Link to="/suburbs" onClick={handleLinkClick}>Chicago Suburbs</Link>
+            <Link to="/chicago-suburbs" onClick={handleLinkClick}>Chicago Suburbs</Link>
           </Dropdown>
 
           <Dropdown

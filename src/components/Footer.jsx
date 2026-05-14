@@ -1,20 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {
+  BUSINESS_ADDRESS_LINE,
+  BUSINESS_EMAIL,
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+} from "../lib/site.js";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="container grid3">
-        {/* Contact */}
         <div>
           <img className="footer-logo" src="/logo.png" alt="The Mobile Tint Pros logo" />
           <h4>Contact</h4>
-          <p>📍 Service Area: 4409 W Roscoe St</p>
-          <p>📞 Phone: (773) 312-4004</p>
-          <p>📧 Email: info@themobiletintpros.com</p>
+          <p>Address: {BUSINESS_ADDRESS_LINE}</p>
+          <p>Service Area: Chicago and surrounding suburbs</p>
+          <p>
+            Phone: <a href={`tel:${BUSINESS_PHONE_TEL}`}>{BUSINESS_PHONE_DISPLAY}</a>
+          </p>
+          <p>
+            Email: <a href={`mailto:${BUSINESS_EMAIL}`}>{BUSINESS_EMAIL}</a>
+          </p>
         </div>
 
-        {/* Links */}
         <div>
           <h4>Quick Links</h4>
           <div style={{ display: "grid", gap: "8px" }}>
@@ -26,13 +35,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Services */}
         <div>
           <h4>Services</h4>
           <div style={{ display: "grid", gap: "8px" }}>
             <Link to="/services/residential">Residential Tinting</Link>
             <Link to="/services/commercial">Commercial Tinting</Link>
-            <Link to="/services/hunter-douglas">Vinyl Graphics</Link>
+            <Link to="/services/automotive-tint">Automotive Tinting</Link>
+            <Link to="/services/commercial#vinyl-graphics">Vinyl Graphics</Link>
           </div>
         </div>
       </div>
@@ -46,7 +55,8 @@ export default function Footer() {
           textAlign: "center",
         }}
       >
-        © {new Date().getFullYear()} The Mobile Tint Pros. All rights reserved.
+        Copyright {new Date().getFullYear()} The Mobile Tint Pros. All rights
+        reserved.
       </div>
     </footer>
   );

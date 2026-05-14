@@ -3,8 +3,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Sparkles, Sun } from "lucide-react";
 import ImageCarousel from "../components/ImageCarousel.jsx";
 import ElfsightForm from "../components/ElfsightForm.jsx";
-
-
+import SEO from "../components/SEO.jsx";
+import {
+  BUSINESS_PHONE_DISPLAY,
+  BUSINESS_PHONE_TEL,
+  buildLocalBusinessJsonLd,
+  buildWebsiteJsonLd,
+} from "../lib/site.js";
 
 function Section({ title, kicker, children }) {
   return (
@@ -68,38 +73,58 @@ function Step({ num, title, text }) {
   );
 }
 
+const description =
+  "Mobile window tinting in Chicago for homes, businesses, and vehicles. Reduce heat, glare, and UV exposure with clean professional installs.";
+
 export default function Home() {
   return (
-  <>
-    <div className="container" style={{ marginTop: 18 }}>
-      <ImageCarousel
-        height={340}
-        autoPlayMs={4000}
-        images={[
-          {
-            src: "/hero/1.png",
-            alt: "Tint installation",
-            title: "Clean installs",
-            subtitle: "Professional window film results.",
-          },
-          {
-            src: "/hero/2.png",
-            alt: "Residential window tint",
-            title: "Residential comfort",
-            subtitle: "Reduce glare • reduce heat • boost privacy.",
-          },
-          {
-            src: "/hero/3.PNG",
-            alt: "Commercial window tint",
-            title: "Commercial performance",
-            subtitle: "Energy savings and a better workspace.",
-          },
-        ]}
+    <>
+      <SEO
+        title="Chicago Window Tinting | The Mobile Tint Pros"
+        description={description}
+        canonical="/"
+        ogImage="/gallery/tinted-house-windows.jpg"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@graph": [
+            buildWebsiteJsonLd(),
+            buildLocalBusinessJsonLd({
+              url: "/",
+              description,
+              image: "/gallery/tinted-house-windows.jpg",
+            }),
+          ],
+        }}
       />
-    </div>
 
-    {/* HERO */}
-    <div className="hero">
+      <div className="container" style={{ marginTop: 18 }}>
+        <ImageCarousel
+          height={340}
+          autoPlayMs={4000}
+          images={[
+            {
+              src: "/hero/1.png",
+              alt: "Window tint installation",
+              title: "Clean installs",
+              subtitle: "Professional window film results.",
+            },
+            {
+              src: "/hero/2.png",
+              alt: "Residential window tint",
+              title: "Residential comfort",
+              subtitle: "Reduce glare, reduce heat, boost privacy.",
+            },
+            {
+              src: "/hero/3.PNG",
+              alt: "Commercial window tint",
+              title: "Commercial performance",
+              subtitle: "Energy savings and a better workspace.",
+            },
+          ]}
+        />
+      </div>
+
+      <div className="hero">
         <div className="container">
           <div className="hero-panel">
             <div className="grid2" style={{ alignItems: "center" }}>
@@ -117,11 +142,12 @@ export default function Home() {
                     objectFit: "cover",
                   }}
                 />
-                <div className="pill">Home & Office Window Tinting</div>
+                <div className="pill">Home, Office, and Automotive Tint</div>
                 <h1 className="h1">Premier Window Tinting Solutions</h1>
                 <p className="lead">
-                  High-quality window film services for homes and businesses—focused
-                  on comfort, privacy, glare control, and energy efficiency.
+                  Professional window film for homes, businesses, and vehicles
+                  across Chicago and surrounding suburbs. We focus on comfort,
+                  privacy, glare control, and long-term performance.
                 </p>
 
                 <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
@@ -136,11 +162,11 @@ export default function Home() {
                 <div style={{ display: "grid", gap: 12, marginTop: 18 }}>
                   <div className="kpi">
                     <strong>Fast scheduling</strong>
-                    <span>Clear timeline + clean install</span>
+                    <span>Clear timeline and clean installation</span>
                   </div>
                   <div className="kpi">
                     <strong>Premium films</strong>
-                    <span>Built for performance + longevity</span>
+                    <span>Built for performance and longevity</span>
                   </div>
                 </div>
               </div>
@@ -148,10 +174,10 @@ export default function Home() {
               <div className="card">
                 <h3 style={{ marginTop: 0 }}>Free Estimate</h3>
                 <p className="lead" style={{ marginTop: 8 }}>
-                  Please fill out the info below. We will get back to you shortly. Thank You!
+                  Tell us about your project and we will get back to you with a
+                  clear recommendation and quote.
                 </p>
 
-                {/* Embed their quote page for now */}
                 <div
                   id="estimate"
                   style={{
@@ -165,7 +191,8 @@ export default function Home() {
                 </div>
 
                 <p className="lead" style={{ marginBottom: 0, marginTop: 12, fontSize: 13 }}>
-                  If the embed blocks in the future, we’ll replace it with your own embed link.
+                  Prefer to talk first? Call{" "}
+                  <a href={`tel:${BUSINESS_PHONE_TEL}`}>{BUSINESS_PHONE_DISPLAY}</a>.
                 </p>
               </div>
             </div>
@@ -173,19 +200,20 @@ export default function Home() {
         </div>
       </div>
 
-      {/* INTRO */}
-      <Section title="Your Leading Area Window Film Specialists" kicker="The Mobile Tint Pros">
+      <Section title="Your Chicago Area Window Film Specialists" kicker="The Mobile Tint Pros">
         <div className="grid2">
           <div className="card">
             <h3 style={{ marginTop: 0 }}>About</h3>
             <p className="lead">
-              We provide premium window tinting for residential and commercial spaces.
-              From consultation to installation, we focus on clean work, quality film,
-              and results you can feel immediately.
+              We provide premium window tinting for residential, commercial,
+              and automotive projects. From consultation to installation, we
+              focus on clean work, quality film, and results you can feel right
+              away.
             </p>
             <p className="lead">
               Choose the right film for heat reduction, glare control, privacy,
-              UV protection, and safety—done the right way.
+              UV protection, and security. We will help you match the product to
+              the problem instead of pushing a one-size-fits-all option.
             </p>
           </div>
 
@@ -194,104 +222,102 @@ export default function Home() {
             <div style={{ display: "grid", gap: 12 }}>
               <div className="kpi">
                 <strong>Comfort</strong>
-                <span>Reduce heat + glare</span>
+                <span>Reduce heat and harsh glare</span>
               </div>
               <div className="kpi">
                 <strong>Protection</strong>
-                <span>UV + fading control</span>
+                <span>UV defense and fade control</span>
               </div>
               <div className="kpi">
                 <strong>Privacy</strong>
-                <span>Decorative + privacy options</span>
+                <span>Decorative, solar, and security options</span>
               </div>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* HOW IT WORKS */}
       <Section title="How It Works" kicker="Step-by-step">
         <div id="how-it-works" className="grid2">
           <div style={{ display: "grid", gap: 14 }}>
             <Step
               num={1}
               title="Request a consultation"
-              text="Reach out and tell us what you want to fix: heat, glare, privacy, or security."
+              text="Reach out and tell us what you want to solve: heat, glare, privacy, security, or style."
             />
             <Step
               num={2}
               title="Schedule an appointment"
-              text="Pick a time that works. We’ll confirm the details and measurements."
+              text="Pick a time that works for your home, office, or vehicle and we will confirm the details."
             />
             <Step
               num={3}
-              title="Meet with our team"
-              text="We review film options and recommend what fits your goals and budget."
+              title="Review film options"
+              text="We recommend products that match your goals, budget, and glass type."
             />
             <Step
               num={4}
-              title="Customization options"
-              text="Choose privacy levels, decorative finishes, or branded film for offices."
+              title="Customize the finish"
+              text="Choose privacy levels, decorative looks, or performance-focused film based on the space."
             />
           </div>
 
           <div style={{ display: "grid", gap: 14 }}>
             <Step
               num={5}
-              title="Installation process"
-              text="We prep surfaces and install precisely for a clean, professional finish."
+              title="Professional installation"
+              text="We prep surfaces carefully and install precisely for a clean, polished result."
             />
             <Step
               num={6}
-              title="Benefits & maintenance"
-              text="We provide care instructions and tell you exactly what to expect after install."
+              title="Care instructions"
+              text="We explain curing time, maintenance, and what to expect right after the install."
             />
             <Step
               num={7}
-              title="Proposal & estimate"
-              text="You get a clear estimate and timeline—no confusion, no surprises."
+              title="Clear quote and timeline"
+              text="You get straightforward pricing and an installation schedule without guesswork."
             />
           </div>
         </div>
       </Section>
 
-      {/* SOLUTIONS */}
-      <Section title="Window Film Solutions For Home and Office" kicker="Solutions">
+      <Section title="Window Film Solutions for Home, Office, and Auto" kicker="Solutions">
         <div className="grid3">
           <SolutionCard
-           imageSrc="/solutions/1.png"
-           icon={<Sun size={16} />}
-           subtitle="Solar + Privacy"
-           title="Privacy"
-           body="Reduce glare and heat while improving privacy and comfort in your space."
-           href="/services/residential"
-        />
+            imageSrc="/solutions/1.png"
+            icon={<Sun size={16} />}
+            subtitle="Solar and Privacy"
+            title="Residential"
+            body="Reduce glare and heat while improving privacy and comfort in your home."
+            href="/services/residential"
+          />
           <SolutionCard
             icon={<Sparkles size={16} />}
             imageSrc="/gallery/decomatte.jpg"
-            subtitle="Design + Branding"
-            title="Decorative"
-            body="Frosted and patterned films that add style—great for offices and storefronts."
+            subtitle="Design and Branding"
+            title="Commercial"
+            body="Frosted, decorative, and privacy films for offices, storefronts, and shared workspaces."
             href="/services/commercial"
           />
           <SolutionCard
             icon={<Shield size={16} />}
-            imageSrc="/gallery/secfilm.jpeg"
-            subtitle="Safety + Strength"
-            title="Security"
-            body="Security films help hold glass together and improve break-in resistance."
-            href="/blog/security-film"
+            imageSrc="/gallery/1.png"
+            subtitle="Heat and Glare Control"
+            title="Automotive"
+            body="Automotive tint for cooler cabins, cleaner looks, more privacy, and UV protection."
+            href="/services/automotive-tint"
           />
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section title="Let’s Discuss Your Window Film Solution" kicker="Get started">
+      <Section title="Let's Discuss Your Window Film Solution" kicker="Get started">
         <div className="grid2">
           <div className="card">
             <h3 style={{ marginTop: 0 }}>Quality-first installs</h3>
             <p className="lead">
-              We focus on prep, precision, and clean installs—so your film looks perfect and lasts.
+              We focus on prep, precision, and clean installation so your film
+              looks right and lasts.
             </p>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 14 }}>
               <Link className="btn" to="/free-estimate">
@@ -304,36 +330,23 @@ export default function Home() {
           </div>
 
           <div className="card">
-            <h3 style={{ marginTop: 0 }}>Service Area</h3>
+            <h3 style={{ marginTop: 0 }}>Service area</h3>
             <p className="lead">
-              Update this to match your real service area (cities, suburbs, coverage radius).
+              Based in Chicago and serving surrounding suburbs for residential,
+              commercial, and automotive work.
             </p>
             <div className="kpi">
-              <strong>Primary area</strong>
-              <span>Set your location</span>
+              <strong>Coverage</strong>
+              <span>Chicago and nearby suburbs</span>
+            </div>
+            <div style={{ marginTop: 14 }}>
+              <Link className="btn secondary" to="/service-areas">
+                View service areas
+              </Link>
             </div>
           </div>
         </div>
       </Section>
-
-      {/*
-      <Section title="Satisfied Customers" kicker="Trusted by">
-        <div className="grid4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="card" style={{ textAlign: "center" }}>
-              <div className="pill" style={{ justifyContent: "center" }}>
-                Client Logo
-              </div>
-              <div style={{ marginTop: 10, color: "var(--muted)" }}>
-                Replace with your logos
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-      */}
     </>
   );
 }
-
-
